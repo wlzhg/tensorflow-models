@@ -244,14 +244,13 @@ class Resnet50CtlBenchmarkBase(CtlBenchmark):
     self._run_and_report_benchmark()
     
   def benchmark_1_gpu_custom(self):
-    """Test Keras model with 1 GPU with tf.keras mixed precision."""
+    """Test Keras model with 1 GPU."""
     self._setup()
 
     FLAGS.num_gpus = 1
     FLAGS.distribution_strategy = 'one_device'
-    FLAGS.model_dir = self._get_model_dir('benchmark_1_gpu_fp16')
-    FLAGS.batch_size = 128
-    FLAGS.dtype = 'fp16'
+    FLAGS.model_dir = self._get_model_dir('benchmark_1_gpu')
+    FLAGS.batch_size = 64
     self._run_and_report_benchmark()
 
   def benchmark_1_gpu_eager(self):
